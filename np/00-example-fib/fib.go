@@ -8,12 +8,13 @@ import "fmt"
 //规律如上，求第n个数的值。
 
 func main(){
+  fmt.Println(fib(2))
   fmt.Println(fib(7))
 }
 
 func fib(n int) int{
 	//定义容器
-	dp:=make([]int,n)
+	dp:=make([]int,n+1)
 
 	//设置初始值
 	dp[0],dp[1]=1,1
