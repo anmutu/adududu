@@ -12,6 +12,7 @@ func main(){
   fmt.Println(fib(7))
 }
 
+
 func fib(n int) int{
 	if n==1||n==2{
 		return 1
@@ -20,7 +21,7 @@ func fib(n int) int{
 	dp:=make([]int,n)
 	//2.找到初始值。
 	dp[0],dp[1]=1,1
-	//3.根据状态转移方程写代码。
+	//3.根据状态转移公式写代码。
 	for i:=2;i<n;i++{
 		dp[i]=dp[i-2]+dp[i-1]
 	}
