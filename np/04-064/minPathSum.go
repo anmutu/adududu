@@ -12,18 +12,17 @@ func main(){
 }
 
 func minPathSum(grid [][]int) int {
-	fmt.Println(grid)
-	//1.定义容器。
-	m:=len(grid)//行
-	n:=len(grid[0])//列
+	//1.定义容器。就用原来的grid.
 
 	//2.找到初始值。
-	//第一列。
-	for i:=1;i<m;i++{
+	m:=len(grid)
+	for i:=1;i<m;i++{//第一列。
 		grid[i][0]+=grid[i-1][0]
 	}
-	//第一行
-	for j:=1;j<n;j++{
+	fmt.Println(grid)
+
+	n:=len(grid[0])
+	for j:=1;j<n;j++{//第一行
 		grid[0][j]+=grid[0][j-1]
 	}
 	fmt.Println(grid)
@@ -35,6 +34,7 @@ func minPathSum(grid [][]int) int {
 		}
 	}
 	fmt.Println(grid)
+	
 	return grid[m-1][n-1]
 }
 
@@ -45,3 +45,4 @@ func min(x,y int)int{
 		return y
 	}
 }
+
