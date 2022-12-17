@@ -13,11 +13,14 @@ func main(){
 // 2,7,    9+2,7=>11   3+2,11=>11     1+11,11=>12
 //dp[i]=max(nums[i]+dp[i-2],dp[i-1])
 func rob(nums []int) int {
+	var res=nums[0]
 	if len(nums)==1{
 		return nums[0]
 	}
-	var res=max(nums[0],nums[1])
-	
+	if len(nums)==2{
+		return max(nums[0],nums[1])
+	}
+
 	//1.定义容器。
 	n:=len(nums)
 	dp:=make([]int,n)
@@ -32,8 +35,6 @@ func rob(nums []int) int {
 			res=dp[i]
 		}
 	}
-	fmt.Println(dp)
-
 	return res
 }
 
@@ -44,3 +45,4 @@ func max(x,y int)int{
 		return y
 	}
 }
+
