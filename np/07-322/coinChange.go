@@ -6,29 +6,41 @@ func main(){
 	coins:=[]int{1,2,5}
 	amount:=11
     fmt.Println(coinChange(coins,amount))
+
+	// coins1 :=[]int{2}
+	// amount1:=3
+	// fmt.Println(coinChange(coins1,amount1))
+
 }
 
 func coinChange(coins []int, amount int) int {
 	//1.定义容器。
-	n:=amount+1
-	dp:=make([]int,n)
+	dp := make([]int, amount+1)
 
-	//2.初始化。
-	dp[0]=0
+	//2.找出初始值。
+	dp[0] = 0
+	for i := 1; i < len(dp); i++ {
+		dp[i] = amount + 1
+	}
 
-	//3.根据状态转移方程写代码。 
-	for i:=1;i<n;i++{
-		dp[i]=-1
-		for j:=0;j<len(coins);j++{
-			if coins[j]<=i{
-				if dp[i]==-1||dp[i]>dp[i-coins[j]]+1{
-					// fmt.Println(i,"=>",dp[i],"=>",dp[i-coins[j]]+1)
-					dp[i]=dp[i-coins[j]]+1
-				}
+	//3.写相关代码。
+	for i := 1; i <= amount; i++ {
+		for j := 0; j < len(coins); j++ {
+			if coins[j] <= i {
+				dp[i] = min(dp[i], dp[i-coins[j]]+1)
 			}
 		}
-		fmt.Println(dp)
+	}
+	if dp[amount] > amount {
+		return -1
 	}
 	return dp[amount]
 }
 
+func min(x,y int)int{
+	if x<y{
+		return x
+	}else{
+		return y
+	}
+}
