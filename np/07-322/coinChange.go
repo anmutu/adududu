@@ -25,11 +25,14 @@ func coinChange(coins []int, amount int) int {
 
 	//3.写相关代码。
 	for i := 1; i <= amount; i++ {
+		fmt.Println("++++++++++++++++++++++++++++++++++++++++++++++++++++start=>i=>",i)
 		for j := 0; j < len(coins); j++ {
 			if coins[j] <= i {
+				fmt.Println("dp[i]=>",dp[i],"dp[i-coins[j]]+1=>",dp[i-coins[j]]+1)
 				dp[i] = min(dp[i], dp[i-coins[j]]+1)
 			}
 		}
+		fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++end=>i=>",i)
 	}
 	if dp[amount] > amount {
 		return -1
